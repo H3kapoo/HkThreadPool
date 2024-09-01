@@ -28,6 +28,8 @@ public:
             return;
         }
 
+        println("Starting %d threads..", threadCount);
+
         /* Spawn threads */
         for (uint16_t i = 0; i < threadCount; i++)
         {
@@ -70,6 +72,8 @@ private:
 public:
     ~ThreadPool()
     {
+        println("Joining threads..");
+
         /* Aquire lock for pool to be able to safely say stop. */
         {
             std::unique_lock<std::mutex> lock{mtx};
